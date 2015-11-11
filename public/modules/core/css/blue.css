@@ -1,0 +1,445 @@
+/* Some stylesheet reset */
+ul.nav, .nav > li, .nav > li > a {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    z-index: 10;
+    margin-right: 70px;
+    color: #28729d;
+    text-align: right;
+
+}
+
+ul.nav {
+    line-height: 1;
+    z-index: 11;
+}
+
+/* General layout styling */
+.nav {
+    /* Layout */
+    list-style: none;
+    position: relative;
+    height: 60px;
+    /*width: 901px;*/
+
+    z-index: 9;
+
+    /* Background & effects */
+    /*background: url(/modules/images/menu.png) no-repeat center;*/
+
+}
+
+/* The list elements containing the links */
+.nav > li {
+    display: block;
+    float: right;
+    position: relative;
+    margin: 0;
+    /*padding: 15px 0px 11px 0;*/
+    z-index: 12;
+    float: right;
+    top: 15px;
+    text-align: right;
+    background: url(/modules/images/menu-sep.png) no-repeat left;
+}
+
+/* The right-aligned links */
+.nav > li.right {
+    float: right;
+    z-index: 13;
+}
+
+/* Navigation links */
+.nav > li > a {
+    /* Layout */
+    position: relative;
+    padding: 6px 10px;
+    z-index: 14;
+    /* Text styling */
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    color: #7598c5;
+    left: 37px;
+
+}
+
+.nav > li > a:hover {
+    background: #7598c5;
+    color: #ffffff;
+    z-index: 15;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+
+}
+
+/* The navigation links for the dropdown menu */
+.nav > .dropdown > a {
+    padding: 6px 5px 6px 10px;
+    z-index: 15;
+    left: 37px;
+    color: #7598c5;
+
+}
+
+/* The links that make the dropdown menu appear */
+.nav > .dropdown:hover > a, .nav > .dropdown > a:hover {
+    text-shadow: none;
+    background: #7598c5;
+    color: #ffffff;
+    border-bottom: 5px solid white;
+    left: 37px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+
+}
+
+/* The arrow indicating the dropdown menu */
+
+/* General styling for the dropdown menu */
+.nav ul {
+    position: absolute;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    top: 50px;
+    z-index: 199;
+    left: -9999px;
+}
+
+/* Creating the slide/fade effect using transitions */
+.nav > li > ul {
+    -webkit-transition: top .3s, opacity .4s;
+    -ms-transition: top .3s, opacity .4s;
+    -o-transition: top .3s, opacity .4s;
+    -moz-transition: top .3s, opacity .4s;
+    opacity: 0;
+    z-index: 200;
+}
+
+/* It displays the menu on hover */
+.nav > .dropdown:hover > ul {
+    margin-right: 17px;
+    opacity: 1;
+    top: 36px;
+}
+
+/* The list elements of the dropdown menu containing the links */
+.nav ul li {
+    position: relative;
+    display: block;
+    padding: 0px 10px;
+    background: white;
+    line-height: 11px;
+    box-shadow: 1px 1px 1px rgba(50, 50, 50, .1),
+    -1px 1px 1px rgba(50, 50, 50, .1);
+}
+
+.nav ul li:first {
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+}
+
+/* The dropdown menu links */
+.nav ul li a {
+    /* Layout */
+    display: inline-block;
+    position: relative;
+    width: 90px;
+    border-bottom: 1px solid #e8e8e8;
+    padding: 8px 0px;
+
+    /* Text & background */
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    text-decoration: none;
+    color: #28729d;
+    background: white;
+}
+
+.nav ul li a:hover, .nav ul .dropdown:hover > a {
+    color: #22a3ee;
+    text-decoration: underline;
+}
+
+/* The arrow indicating a level 2 dropdown */
+.nav ul .dropdown > a::after {
+    content: "";
+    position: absolute;
+    top: 12px;
+    right: 5px;
+    width: 0px;
+    height: 0px;
+
+    border-left: 4px solid #28729d;
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+    border-right: 4px solid transparent;
+}
+
+.nav ul .dropdown:hover > a::after, .nav ul .dropdown > a:hover::after {
+    border-left: 4px solid #22a3ee; /* Changing the color of the arrow on hover */
+}
+
+/* Rounded corners for the dropdown menu */
+.nav ul li:last-child {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    box-shadow: 1px 1px 1px rgba(50, 50, 50, .1),
+    -1px 1px 1px rgba(50, 50, 50, .1),
+    0px 1px 1px rgba(50, 50, 50, .1);
+}
+
+.nav ul li:last-child a {
+    border-bottom: 2px solid white;
+}
+
+/* Level 2 dropdown */
+.nav ul ul {
+    /* Layout & position */
+    top: 42px;
+    padding-left: 10px;
+
+    /* Creating the slide/fade effect using transitions */
+    -webkit-transition: top .3s, opacity .4s;
+    -ms-transition: top .3s, opacity .4s;
+    -o-transition: top .3s, opacity .4s;
+    -moz-transition: top .3s, opacity .4s;
+    opacity: 0;
+
+}
+
+/* It displays the level 2 dropdown menu on hover */
+.nav ul li:hover > ul, .nav ul li:hover ul li:hover ul {
+    left: 110px;
+    top: -2px;
+    opacity: 1;
+
+}
+
+/* Rounded corners for the level 2 dropdown menu */
+.nav ul ul li:first-child {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.nav ul ul li:first-child a {
+    border-top: 2px solid white;
+}
+
+/* MEGA MENU */
+.dropdown_1column,
+.dropdown_2columns,
+.dropdown_3columns,
+.dropdown_4columns,
+.dropdown_5columns {
+    /* Layout & position */
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    top: 80px;
+    left: -9999px;
+    padding: 0px 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+    /* Creating the slide/fade effect using transitions */
+    -webkit-transition: top .3s, opacity .4s;
+    -ms-transition: top .3s, opacity .4s;
+    -moz-transition: top .3s, opacity .4s;
+    -o-transition: top .3s, opacity .4s;
+    opacity: 0;
+
+    /* Background & effects */
+    background: white;
+    box-shadow: 1px 1px 1px rgba(50, 50, 50, .1),
+    -1px 1px 1px rgba(50, 50, 50, .1),
+    0px 1px 1px rgba(50, 50, 50, .1);
+}
+
+/* Setting the width for every type of menu */
+.dropdown_1column {
+    width: 100px;
+}
+
+/* One column menu */
+.dropdown_2columns {
+    width: 200px;
+}
+
+/* Two columns menu */
+.dropdown_3columns {
+    width: 300px;
+}
+
+/* Three columns menu */
+.dropdown_4columns {
+    width: 400px;
+}
+
+/* Four columns menu */
+.dropdown_5columns {
+    width: 500px;
+}
+
+/* Five columns menu */
+
+/* Displaying the menu on hover */
+.nav > .dropdown:hover .dropdown_1column,
+.nav > .dropdown:hover .dropdown_2columns,
+.nav > .dropdown:hover .dropdown_3columns,
+.nav > .dropdown:hover .dropdown_4columns,
+.nav > .dropdown:hover .dropdown_5columns {
+    left: auto;
+    top: 36px;
+    opacity: 1;
+}
+
+/* The content of the mega menu */
+.col_1,
+.col_2,
+.col_3,
+.col_4,
+.col_5 {
+    display: inline;
+    float: left;
+    position: relative;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+/* Setting the width for the different classes of the elements contained by the mega menu */
+.col_1 {
+    width: 90px;
+}
+
+/* An element which takes 1 column of the mega menu */
+.col_2 {
+    width: 190px;
+}
+
+/* An element which takes 2 columns of the mega menu */
+.col_3 {
+    width: 290px;
+}
+
+/* An element which takes 3 columns of the mega menu */
+.col_4 {
+    width: 390px;
+}
+
+/* An element which takes 4 columns of the mega menu */
+.col_5 {
+    width: 490px;
+}
+
+/* An element which takes all the 5 columns of the mega menu */
+
+/* Styling the elements of the megamenu */
+.nav p, .nav h2, .nav h3, .nav > li > div ul li {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: left;
+}
+
+/* Styling the paragraphs */
+.nav p {
+    font-size: 11px;
+    color: #555555;
+}
+
+/* Styling the big titles */
+.nav h2 {
+    font-size: 15px;
+    line-height: 15px;
+    color: #555555;
+}
+
+/* Styling the small titles */
+.nav h3 {
+    font-size: 13px;
+    line-height: 13px;
+    color: #555555;
+}
+
+/* The horizonal lines */
+.nav hr {
+    margin: 0px 5px;
+    border: none;
+    border: 1px solid #e8e8e8;
+    border-top: 0;
+}
+
+/* The links from the mega menu */
+.nav div a {
+    color: #28729d;
+    text-decoration: none;
+}
+
+.nav div a:hover {
+    color: #22a3ee;
+    text-decoration: underline;
+}
+
+/* Styling the lists of the mega menu */
+.nav div ul {
+    position: relative;
+    list-style: none;
+    left: auto;
+    top: auto;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 5px 0px;
+    width: 90px;
+}
+
+.nav div ul li, .nav div ul li:last-child {
+    font-size: 11px;
+    border: 0;
+    box-shadow: none;
+    padding: 0;
+    width: auto;
+    padding: 5px 0px;
+}
+
+.nav div ul li a {
+    border: 0;
+    box-shadow: none;
+    padding: 0;
+    width: auto;
+    color: #28729d;
+}
+
+/* The right aligned menus */
+.right:hover div, .right.dropdown:hover > ul {
+    left: auto;
+    right: 5px;
+}
+
+.right.dropdown ul {
+    text-align: right;
+}
+
+.nav .right.dropdown li > a::after {
+    right: auto;
+    left: -5px;
+    border-left: 4px solid transparent;
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+    border-right: 4px solid #28729d;
+}
+
+.nav .right.dropdown li:hover > a::after {
+    border-right: 4px solid #22a3ee;
+}
+
+.right.dropdown > ul > li:hover > ul {
+    left: -120px;
+    padding-right: 0px;
+}
+	

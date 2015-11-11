@@ -1,0 +1,372 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0px;
+    padding: 0px;
+    background: url('/modules/images/bg.png') repeat-x top;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    vertical-align: top;
+    outline: 0;
+    border: 0;
+    font-size: 100%;
+    font-family: arial;
+}
+
+#main {
+    width: 902px;
+    margin: 15px auto;
+}
+
+#header {
+    width: 902px;
+    height: 85px;
+    float: right;
+}
+
+#logo {
+    background: url('/modules/images/logo.png') no-repeat;
+    width: 141px;
+    height: 85px;
+    float: left;
+}
+
+#logo a {
+    display: block;
+    width: 141px;
+    height: 85px;
+}
+
+#menu {
+    background: url('/modules/images/menu.png') no-repeat;
+    width: 901px;
+    height: 79px;
+    float: right;
+    margin-top: 17px;
+}
+
+#menu ul {
+    width: 890px;
+    height: 60px;
+    margin: 10px 6px 0px 0px;
+    float: right;
+    list-style-type: none;
+}
+
+#menu ul li {
+    width: 147px;
+    height: 43px;
+    border-right: 1px solid #dfeaf1;
+    text-align: center;
+    font-size: 17px;
+    float: right;
+    padding-top: 17px;
+}
+
+#menu li#selected {
+    background: url('/modules/images/menu-selected.png') repeat-x;
+    width: 147px;
+    margin-top: 1px;
+}
+
+#menu li#selected a, a:visited {
+    color: #fff;
+}
+
+#menu ul li:hover {
+    background: url('/modules/images/menu-selected.png') repeat;
+    width: 147px;
+    height: 40px;
+    margin-top: 1px;
+}
+
+#menu ul li:hover a, a:visited {
+    color: #fff;
+}
+
+#menu ul a, a:visited {
+    color: #7598b8;
+    text-decoration: none;
+}
+
+#menu ul li.drop:hover {
+    border-bottom: 1px solid #fff
+}
+
+#menu ul.dropM {
+    list-style-type: none;
+    z-index: 4;
+    float: none;
+    position: absolute;
+    width: 142px;
+    margin: 21px 0px 0px 0px;
+    display: block;
+}
+
+#menu ul.dropM li {
+    width: 142px;
+    background: url('/modules/images/menu-selected.png') repeat-x;
+    height: 38px;
+    padding: 10px 5px 0px 0px;
+    float: none;
+    border: 0px;
+    text-align: center;
+    border-bottom: 1px solid #fff;
+}
+
+#menu ul.dropM li:hover {
+    margin-top: 0px;
+}
+
+#menu ul.dropM a, a:visited {
+    color: #fff;
+}
+
+#gallery {
+    float: right;
+    width: 900px;
+    height: 418px;
+    z-index: 3;
+    position: relative;
+    margin-top: 15px;
+}
+
+#gallery ul {
+    list-style-type: none;
+    margin-top: 160px;
+}
+
+#left {
+    background: url('/modules/images/left.png') no-repeat;
+    width: 54px;
+    height: 54px;
+    float: left;
+}
+
+#left a {
+    display: block;
+    width: 54px;
+    height: 54px;
+}
+
+#right {
+    background: url('/modules/images/right.png') no-repeat;
+    width: 54px;
+    height: 54px;
+    float: right;
+}
+
+#right a {
+    display: block;
+    width: 54px;
+    height: 54px;
+}
+
+#blueMain {
+    width: 100%;
+    float: right;
+    margin-top: -12px;
+}
+
+#blueMainP {
+    width: 100%;
+    float: right;
+}
+
+#secondpage {
+    width: 890px;
+    float: right;
+}
+
+#secondpage span {
+    color: #3EBEF1;
+    font-size: 22px;
+    font-weight: bold;
+    float: right;
+    width: 880px;
+    padding: 0px 10px 0px 0px;
+}
+
+#secondpage p {
+    font-size: 13px;
+    color: #7598B8;
+    width: 868px;
+    padding: 7px 12px 0px 0px;
+}
+
+#sMain {
+    background: url('/modules/images/sMain.png') no-repeat;
+    width: 901px;
+    height: 10px;
+    margin: 0px auto;
+}
+
+#kMain {
+    width: 901px;
+    background: #dfeaf1 repeat-y;
+    margin: 0px auto;
+}
+
+#eMain {
+    background: url('/modules/images/eMain.png') no-repeat;
+    width: 901px;
+    height: 10px;
+    margin: 0px auto;
+}
+
+#whiteblock {
+    width: 890px;
+    float: right;
+    margin: 0px 5px 0px 0px;
+}
+
+#whiteS {
+    background: url('/modules/images/whiteS.png') no-repeat;
+    width: 885px;
+    height: 13px;
+    margin: 0px auto;
+}
+
+#whiteE {
+    background: url('/modules/images/whiteE.png') no-repeat;
+    width: 885px;
+    height: 13px;
+    margin: 0px auto;
+}
+
+#whiteK {
+    background: #fff repeat-y;
+    width: 883px;
+    margin: 0px auto;
+}
+
+.block {
+    width: 262px;
+    float: right;
+    margin: 0px 17px 0px 0px;
+}
+
+.img-frame {
+    margin-top: 10px;
+    background: url('/modules/images/img-frame.png') no-repeat;
+    width: 262px;
+    height: 114px;
+    float: right;
+}
+
+.img-frame img {
+    margin: 7px 8px 0px 0px;
+    width: 247px;
+    height: 101px;
+}
+
+.block h3 {
+    width: 262px;
+    color: #3ebef1;
+    font-size: 22px;
+    font-weight: bold;
+    float: right;
+}
+
+.block p {
+    color: #7598b8;
+    font-size: 13px;
+    width: 258px;
+    float: right;
+    padding: 15px 4px 0px 0px;
+}
+
+.line {
+    background: #dfeaf1;
+    width: 1px;
+    height: 472px;
+    float: right;
+    margin-right: 15px;
+}
+
+.bottomBlock {
+    width: 228px;
+    float: right;
+    margin: 15px 30px 0px 35px;
+}
+
+.bottomBlock span {
+    color: #7598b8;
+    font-size: 22px;
+    font-weight: bold;
+    width: 228px;
+    float: right;
+}
+
+.bottomBlock form {
+    width: 220px;
+    float: right;
+}
+
+.bottomBlock form input[type="text"] {
+    background: url('/modules/images/input.png') no-repeat;
+    width: 209px;
+    height: 40px;
+    color: #7598b8;
+    font-size: 16px;
+    padding: 0px 5px 0px 5px;
+    margin-top: 14px;
+}
+
+.bottomBlock form input[type="submit"] {
+    background: url('/modules/images/submit.png') no-repeat;
+    width: 80px;
+    font-size: 18px;
+    color: #7598b8;
+    margin-top: 13px;
+    font-weight: bold;
+    float: left;
+    height: 40px;
+    cursor: pointer;
+}
+
+.bottomBlock ul {
+    margin-top: 9px;
+    width: 228px;
+    list-style-type: none;
+    float: right;
+}
+
+.bottomBlock ul li {
+    font-size: 13px;
+    width: 228px;
+    padding-top: 6px;
+    color: #4e4e4e;
+}
+
+.bottomBlock ul a, a:visited {
+    color: #3ebef1;
+    text-decoration: none;
+}
+
+#copyrights {
+    width: 903px;
+    float: right;
+    margin: 10px 0px 25px 0px;
+    color: #4e4e4e;
+    font-size: 12px;
+}
+
+#leftC {
+    float: left;
+}
+
+#rightC {
+    float: right;
+    text-align: right;
+}
+
+#send {
+    background-image: url(/modules/images/send.png);
+    height: 38px;
+    width: 82px;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
