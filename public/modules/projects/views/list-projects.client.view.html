@@ -1,21 +1,23 @@
 <section data-ng-controller="ProjectsController" data-ng-init="find()">
 
-    <div ng-if="authentication.user">
-        <a ui-sref="createProject">מוצרים</a>
-    </div>
 
     <div class="page-header">
         <h1>מציאון</h1>
     </div>
 
+    <div class="row" ng-if="authentication.user">
+        <a class="btn btn-success" ui-sref="createProject">מוצרים</a>
+    </div>
     <div class="row" dir="rtl">
 
         <div class="col-sm-4 col-lg-4 col-md-4" data-ng-repeat="project in projects">
             <div class="thumbnail">
                 <img ng-src="{{project.images[0]}}" src="http://placehold.it/320x150" alt="">
+
                 <div class="caption">
                     <h4>{{project.name}}</h4>
                     <h4>מחיר : {{project.price | currency:'₪'}} </h4>
+
                     <p>
                         {{project.description}}
                     </p>
@@ -24,6 +26,7 @@
 
                 <div class="ratings">
                     <p class="pull-right">צפיות {{getRandViews()}}</p>
+
                     <p ng-init="getRandStars()">
                         <span ng-repeat="start in arrStars" class="glyphicon glyphicon-star"></span>
                         <!--<span class="glyphicon glyphicon-star"></span>-->
@@ -36,16 +39,16 @@
         </div>
     </div>
     <!--<div class="list-group hide">-->
-        <!--<a data-ng-repeat="project in projects" data-ng-href="#!/projects/{{project._id}}" class="list-group-item">-->
-			<!--<small class="list-group-item-text">-->
-				<!--נוצר באריך-->
-				<!--<span data-ng-bind="project.created | date:'medium'"></span>-->
-				<!--על ידי-->
-				<!--<span data-ng-bind="project.user.displayName"></span>-->
-			<!--</small>-->
-            <!--<hr>-->
-			<!--<h1 class="list-group-item-heading" data-ng-bind="project.name"></h1>-->
-        <!--</a>-->
+    <!--<a data-ng-repeat="project in projects" data-ng-href="#!/projects/{{project._id}}" class="list-group-item">-->
+    <!--<small class="list-group-item-text">-->
+    <!--נוצר באריך-->
+    <!--<span data-ng-bind="project.created | date:'medium'"></span>-->
+    <!--על ידי-->
+    <!--<span data-ng-bind="project.user.displayName"></span>-->
+    <!--</small>-->
+    <!--<hr>-->
+    <!--<h1 class="list-group-item-heading" data-ng-bind="project.name"></h1>-->
+    <!--</a>-->
     <!--</div>-->
 
 </section>
