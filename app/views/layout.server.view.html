@@ -57,12 +57,7 @@
 
 <!--Embedding The User Object-->
 <script type="text/javascript">
-    var user = {
-    {
-        user | json | safe
-    }
-    }
-    ;
+    var user = {{user | json | safe}};
 </script>
 
 <!--Application JavaScript Files-->
@@ -75,6 +70,8 @@
 <script type="text/javascript" src="http://localhost:35729/livereload.js"></script>
 
 {% endif %}
+
+
 </body>
 
 </html>

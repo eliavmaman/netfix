@@ -1,0 +1,66 @@
+<section data-ng-controller="ProjectsController">
+    <div class="page-header">
+        <h1>צור פרוייקט חדש</h1>
+    </div>
+
+    <div class="container">
+        <div class="col-md-5">
+            <div class="form-area">
+                <form class="form-horizontal" data-ng-submit="create()" novalidate>
+                    <fieldset>
+                        <div class="form-group">
+                            <label class="control-label" for="name">שם</label>
+
+                            <div class="controls">
+                                <input type="text" data-ng-model="name" id="name" class="form-control"
+
+                                       required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="name">מחיר</label>
+
+                            <div class="controls">
+                                <input type="number" data-ng-model="price" id="price" class="form-control"
+
+                                       required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                    <textarea class="form-control" data-ng-model="description" type="textarea" id="message"
+                              placeholder="תאור הפרוייקט"
+                              rows="7"></textarea>
+
+                        </div>
+
+                        <div class="form-group">
+                            <div style="">
+                                <div id="image" s3-upload bucket="'blove'"
+                                     ng-model="credentials.image"
+                                     s3-upload-options="{ getOptionsUri: credentials.s3OptionsUri }"
+                                     bootstrap-version="3"></div>
+                            </div>
+                            <div class="form-group">
+                                <label>
+                                    תמונות של המיזם
+                                </label>
+                                <ul style="list-style-type: none;">
+                                    <li ng-repeat="image in images">
+                                        <img ng-src="{{image}}" class="thumbnail" style="width: 150px;height: 150px;;" alt=""/>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-default" value="שמור">
+                            </div>
+                            <div data-ng-show="error" class="text-danger">
+                                <strong data-ng-bind="error"></strong>
+                            </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+

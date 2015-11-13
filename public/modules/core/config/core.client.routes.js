@@ -24,9 +24,9 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
         url: '/businessSupport',
         templateUrl: 'modules/core/views/businessSupport.client.view.html'
       }).
-      state('projects', {
-        url: '/projects',
-        templateUrl: 'modules/core/views/projects.client.view.html'
+      state('manageprojects', {
+        url: '/manageprojects',
+        templateUrl: 'modules/core/views/manageprojects.client.view.html'
       }).
       state('scanNetwork', {
         url: '/scanNetwork',
@@ -56,6 +56,20 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
       state('recovery', {
         url: '/recovery',
         templateUrl: 'modules/core/views/recovery.client.view.html'
+      }).
+    state('contactus', {
+      url: '/contactus',
+      templateUrl: 'modules/core/views/contactus.client.view.html'
+    })
+      .
+      state('manageNetworks', {
+        url: '/manageNetworks',
+        templateUrl: 'modules/core/views/manageNetworks.client.view.html'
+      })
+      .
+      state('manageProducts', {
+        url: '/manageProducts',
+        templateUrl: 'modules/core/views/manageProducts.client.view.html'
       })
       .state('outSource', {
         url: '/outSource',

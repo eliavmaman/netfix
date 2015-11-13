@@ -370,3 +370,8 @@ body {
     background-repeat: no-repeat;
     background-position: center center;
 }
+img.contactus{
+    width: 100px;
+    float: right;
+    height: 100px;
+}

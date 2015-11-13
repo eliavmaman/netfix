@@ -1,0 +1,48 @@
+<section data-ng-controller="ProjectsController" data-ng-init="findOne()">
+    <div class="container">
+        <div class="col-sm-5">
+            <div class="page-header">
+                <h1 data-ng-bind="project.name"></h1>
+            </div>
+            <div>
+                <div class="form-group">
+                    <textarea disabled class="form-control" data-ng-bind="project.description"
+                              type="textarea" id="message"
+                              rows="7"></textarea>
+
+                </div>
+            </div>
+            <small>
+                <em class="text-muted">
+                    נוצר בתאריך
+                    <span data-ng-bind="project.created | date:'mediumDate'"></span>
+                    על ידי
+                    <span data-ng-bind="project.user.displayName"></span>
+                </em>
+            </small>
+            <div class="form-group">
+                <label>
+                    תמונות של המיזם
+                </label>
+                <ul style="list-style-type: none;">
+                    <li ng-repeat="image in project.images">
+                        <img ng-src="{{image}}" class="thumbnail" style="width: 150px;height: 150px;;" alt=""/>
+                    </li>
+                </ul>
+            </div>
+            <div data-ng-show="authentication.user.userType=='marketer'">
+                <a class="btn btn-primary btn-lg loading">שווק את הפרוייקט</a>
+            </div>
+            <div class="" data-ng-show="authentication.user._id == project.user._id">
+                <a class="btn btn-primary" href="/#!/projects/{{project._id}}/edit">
+                    <i class="glyphicon glyphicon-edit"></i>
+                </a>
+                <a class="btn btn-primary" data-ng-click="remove();">
+                    <i class="glyphicon glyphicon-trash"></i>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+</section>

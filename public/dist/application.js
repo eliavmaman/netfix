@@ -6,13 +6,14 @@ var ApplicationConfiguration = function () {
     var applicationModuleVendorDependencies = [
         'ngResource',
         'ngCookies',
-        'ngAnimate',
         'ngTouch',
         'ngSanitize',
         'ui.router',
         'ui.bootstrap',
-        'ui.utils'
+        'ui.utils',
+        'ngS3upload'
       ];
+    //'ngAnimate'
     // Add a new vertical module
     var registerModule = function (moduleName, dependencies) {
       // Create angular module
@@ -47,6 +48,8 @@ angular.element(document).ready(function () {
 ApplicationConfiguration.registerModule('articles');'use strict';
 // Use Applicaion configuration module to register a new module
 ApplicationConfiguration.registerModule('core');'use strict';
+// Use applicaion configuration module to register a new module
+ApplicationConfiguration.registerModule('projects');'use strict';
 // Use Applicaion configuration module to register a new module
 ApplicationConfiguration.registerModule('users');'use strict';
 // Configuring the Articles module
@@ -181,6 +184,15 @@ angular.module('core').config([
     }).state('recovery', {
       url: '/recovery',
       templateUrl: 'modules/core/views/recovery.client.view.html'
+    }).state('contactus', {
+      url: '/contactus',
+      templateUrl: 'modules/core/views/contactus.client.view.html'
+    }).state('manageNetworks', {
+      url: '/manageNetworks',
+      templateUrl: 'modules/core/views/manageNetworks.client.view.html'
+    }).state('manageProducts', {
+      url: '/manageProducts',
+      templateUrl: 'modules/core/views/manageProducts.client.view.html'
     }).state('outSource', {
       url: '/outSource',
       templateUrl: 'modules/core/views/out-source.client.view.html'
@@ -202,6 +214,8 @@ angular.module('core').controller('HeaderController', [
     $scope.$on('$stateChangeSuccess', function () {
       $scope.isCollapsed = false;
     });
+    $scope.logout = function () {
+    };
   }
 ]);'use strict';
 angular.module('core').controller('HomeController', [
@@ -210,6 +224,16 @@ angular.module('core').controller('HomeController', [
   function ($scope, Authentication) {
     // This provides Authentication context.
     $scope.authentication = Authentication;
+    $scope.slides = [
+      {
+        image: '/modules/images/business-leadership-3.png',
+        active: true
+      },
+      {
+        image: '/modules/images/images_slider2.jpg',
+        active: false
+      }
+    ];
   }
 ]);$(document).ready(function () {
   $('.dropM').hide();
@@ -2585,7 +2609,116 @@ angular.module('core').service('Menus', [function () {
     };
     //Adding the topbar menu
     this.addMenu('topbar');
-  }]);'use strict';
+  }]);'use strict';  // Configuring the Articles module
+               //angular.module('projects').run(['Menus',
+               //	function(Menus) {
+               //		// Set top bar menu items
+               //		Menus.addMenuItem('topbar', 'פרוייקטים', 'projects', 'dropdown', '/projects(/create)?');
+               //		Menus.addSubMenuItem('topbar', 'projects', 'לרשימת הפרוייקטים', 'projects');
+               //		Menus.addSubMenuItem('topbar', 'projects', 'הקם פרוייקט חדש', 'projects/create');
+               //	}
+               //]);
+'use strict';
+//Setting up route
+angular.module('projects').config([
+  '$stateProvider',
+  function ($stateProvider) {
+    // Projects state routing
+    $stateProvider.state('listProjects', {
+      url: '/projects',
+      templateUrl: 'modules/projects/views/list-projects.client.view.html'
+    }).state('createProject', {
+      url: '/projects/create',
+      templateUrl: 'modules/projects/views/create-project.client.view.html'
+    }).state('viewProject', {
+      url: '/projects/:projectId',
+      templateUrl: 'modules/projects/views/view-project.client.view.html'
+    }).state('editProject', {
+      url: '/projects/:projectId/edit',
+      templateUrl: 'modules/projects/views/edit-project.client.view.html'
+    });
+  }
+]);'use strict';
+// Projects controller
+angular.module('projects').controller('ProjectsController', [
+  '$scope',
+  '$stateParams',
+  '$location',
+  'Authentication',
+  'Projects',
+  function ($scope, $stateParams, $location, Authentication, Projects) {
+    $scope.authentication = Authentication;
+    $scope.credentials = {
+      languages: [],
+      s3OptionsUri: '/s3upload',
+      image: null
+    };
+    $scope.$watch('credentials.image', function (newValue, oldValue) {
+      if (newValue) {
+        $scope.images.push(newValue);
+        $scope.credentials.image = null;
+      }
+    });
+    $scope.images = [];
+    // Create new Project
+    $scope.create = function () {
+      // Create new Project object
+      var project = new Projects({
+          name: this.name,
+          description: this.description,
+          images: $scope.images
+        });
+      // Redirect after save
+      project.$save(function (response) {
+        $location.path('projects/' + response._id);
+        // Clear form fields
+        $scope.name = '';
+        $scope.description = '';
+      }, function (errorResponse) {
+        $scope.error = errorResponse.data.message;
+      });
+    };
+    // Remove existing Project
+    $scope.remove = function (project) {
+      if (project) {
+        project.$remove();
+        for (var i in $scope.projects) {
+          if ($scope.projects[i] === project) {
+            $scope.projects.splice(i, 1);
+          }
+        }
+      } else {
+        $scope.project.$remove(function () {
+          $location.path('projects');
+        });
+      }
+    };
+    // Update existing Project
+    $scope.update = function () {
+      var project = $scope.project;
+      project.$update(function () {
+        $location.path('projects/' + project._id);
+      }, function (errorResponse) {
+        $scope.error = errorResponse.data.message;
+      });
+    };
+    // Find a list of Projects
+    $scope.find = function () {
+      $scope.projects = Projects.query();
+    };
+    // Find existing Project
+    $scope.findOne = function () {
+      $scope.project = Projects.get({ projectId: $stateParams.projectId });
+    };
+  }
+]);'use strict';
+//Projects service used to communicate Projects REST endpoints
+angular.module('projects').factory('Projects', [
+  '$resource',
+  function ($resource) {
+    return $resource('projects/:projectId', { projectId: '@_id' }, { update: { method: 'PUT' } });
+  }
+]);'use strict';
 // Config HTTP Error Handling
 angular.module('users').config([
   '$httpProvider',
@@ -2656,7 +2789,8 @@ angular.module('users').controller('AuthenticationController', [
   '$http',
   '$location',
   'Authentication',
-  function ($scope, $http, $location, Authentication) {
+  '$window',
+  function ($scope, $http, $location, Authentication, $window) {
     $scope.authentication = Authentication;
     // If user is signed in then redirect back home
     if ($scope.authentication.user)
@@ -2675,6 +2809,7 @@ angular.module('users').controller('AuthenticationController', [
       $http.post('/auth/signin', $scope.credentials).success(function (response) {
         // If successful we assign the response to the global user model
         $scope.authentication.user = response;
+        $window.sessionStorage.user = JSON.stringify(response);
         // And redirect to the index page
         $location.path('/');
       }).error(function (response) {
