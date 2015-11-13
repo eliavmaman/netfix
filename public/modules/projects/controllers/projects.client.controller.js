@@ -40,7 +40,8 @@ angular.module('projects').controller('ProjectsController',
         var project = new Projects({
           name: this.name,
           description: this.description,
-          images: $scope.images
+          images: $scope.images,
+          price:this.price
         });
 
         // Redirect after save
